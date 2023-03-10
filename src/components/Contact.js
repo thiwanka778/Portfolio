@@ -35,7 +35,7 @@ const Contact = () => {
       if(formData.name!=="" && formData.email!=="" && formData.message!==""){
         try {
             setWorking(true);
-            const result = await emailjs.send('service_kp4v2to', 'template_63omtbl', formData,"uNKsitVjgYfmMHfVB");
+            const result = await emailjs.send('service_kp4v2to', 'template_63omtbl', formData,`${process.env.REACT_APP_API_KEY}`);
             setWorking(false);
             setsOpen(true);
            
