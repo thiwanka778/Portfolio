@@ -1,24 +1,59 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./index.css"
+import { useDispatch } from "react-redux";
+import About from "./components/About";
+import Skill from "./components/Skill";
+import {getScreenWidth} from "./features/mainSlice";
+import Home from "./components/Home";
+import Coruesel from "./components/Coruesel";
+import Portfolio from "./components/Portfolio";
+import Contact from "./components/Contact";
+import BottomNavigationBar from "./components/BottomNavigationBar";
+import {BrowserRouter} from "react-router-dom";
+import Footer from "./components/Footer";
+
 
 function App() {
+  const dispatch=useDispatch();
+  const [screenWidth, setScreenWidth] = React.useState(window.innerWidth);
+
+  React.useEffect(() => {
+    const handleResize = () => setScreenWidth(window.innerWidth);
+
+    window.addEventListener('resize', handleResize);
+
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  React.useEffect(()=>{
+   dispatch(getScreenWidth(screenWidth))
+  },[screenWidth,dispatch])
+
+  console.log(screenWidth)
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <BrowserRouter>
+    <div className="app">
+     
+      
+      <Home/>
+<About/>
+<Skill/>
+<Portfolio/>
+<Coruesel/>
+<Contact/>
+<Footer/>   
+      
+      
+
+
+
+<div className="app-bt">
+  <BottomNavigationBar/>
+</div>
+
+
     </div>
+    </BrowserRouter>
   );
 }
 
