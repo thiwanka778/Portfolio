@@ -41,6 +41,7 @@ const Contact = () => {
            
           } catch (error) {
              seteOpen(true);
+             setWorking(false)
           }
       }else{
         setOpen(true)

@@ -1,17 +1,18 @@
 import React from 'react';
 import "../index.css";
 import me from "../assets/me.png"
+import { HashLink} from 'react-router-hash-link';
 
 const Home = () => {
   return (
     <div id="#">
          <div className="title">
 <p style={{fontSize:"19px",padding:"5px"}}>Hello, I'm</p>
-<p style={{fontSize:"24px",letterSpacing:"2px",padding:"5px"}}>Mandira Gamlath</p>
+<p style={{fontSize:"24px",letterSpacing:"2px",padding:"5px"}}>Thiwanka Udumulla</p>
 <p style={{fontSize:"13px",padding:"0px",color:"#d7dae0",}}>Fullstack Developer</p>
 <div className="btns">
-  <button className="download">Download CV</button>
-  <button className="talk">Let's Talk</button>
+  <a href="https://drive.google.com/u/0/uc?id=11HdjEE68ytngMHmWT-1ttM3dpWxkWRv9&export=download" target="_blank" className="download">Download CV</a>
+  <HashLink to="#contact" smooth duration={1000} className="talk">Let's Talk</HashLink>
 </div>
    </div>
 

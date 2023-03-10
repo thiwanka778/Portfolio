@@ -5,6 +5,7 @@ import WorkspacePremiumIcon from '@mui/icons-material/WorkspacePremium';
 import PeopleIcon from '@mui/icons-material/People';
 import SnippetFolderIcon from '@mui/icons-material/SnippetFolder';
 import { useSelector } from 'react-redux';
+import { HashLink} from 'react-router-hash-link';
 
 
 const About = () => {
@@ -67,7 +68,7 @@ I'm a React full stack developer skilled in front-end, back-end,
 </p>
 
 <div>
-<button className="talk">Let's Talk</button>
+<HashLink to="#contact" smooth duration={1000} className="talk">Let's Talk</HashLink>
 </div>
 
 
