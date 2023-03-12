@@ -9,6 +9,9 @@ import Snackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
 import Backdrop from '@mui/material/Backdrop';
 import CircularProgress from '@mui/material/CircularProgress';
+import axios from 'axios';
+
+
 
 const Alert = React.forwardRef(function Alert(props, ref) {
     return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
@@ -22,10 +25,16 @@ const Contact = () => {
     const [working,setWorking]=React.useState(false);
     const [sopen, setsOpen] = React.useState(false);
     const [eopen, seteOpen] = React.useState(false);
+    
+  
+
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
       };
+
+
+   
 
 
       const handleSubmit = async () => {
@@ -33,23 +42,28 @@ const Contact = () => {
       setLoading(true);
       
       if(formData.name!=="" && formData.email!=="" && formData.message!==""){
-        try {
+          
+          try {
             setWorking(true);
             const result = await emailjs.send('service_kp4v2to', 'template_63omtbl', formData,`${process.env.REACT_APP_API_KEY}`);
             setWorking(false);
             setsOpen(true);
+            setFormData({ name: '', email: '', message: '' });
            
           } catch (error) {
              seteOpen(true);
              setWorking(false)
           }
+        /*   you can write second function */
+       
+
       }else{
         setOpen(true)
       }
        
       
         // reset form values
-        setFormData({ name: '', email: '', message: '' });
+       
         setLoading(false)
       }
 
@@ -75,6 +89,7 @@ const handleCloseSuccess = () => {
          <div className='about-a'>
         <p style={{fontSize:"16px",padding:"1px",color:"#d7dae0"}}>Get in Touch</p>
         <p style={{fontSize:"22px",padding:"1px",color:"#3d80eb"}}>Contact Me</p>
+        
      </div>  
 
      <div className='ca' style={{flexDirection:screen<=861?"column":"row"}}>
@@ -84,24 +99,30 @@ const handleCloseSuccess = () => {
 
 <div style={{display:"flex",flexDirection:"column"}}>
 
-    <div className='contact-box' style={{borderRadius:"10px",display:"flex",flexDirection:"column",
-alignItems:"center",justifyContent:"center",padding:"10px",width:"280px",marginBottom:"20px",border:"1px solid #4071ed"}}>
+    <div  className='contact-box' style={{borderRadius:"10px",display:"flex",flexDirection:"column",
+alignItems:"center",justifyContent:"center",padding:"10px",width:"280px",marginBottom:"20px",border:"1px solid #4071ed",
+}}>
+
         <div style={{color:"white"}}><EmailIcon /></div>
         <p style={{fontFamily:"'Ubuntu', sans-serif",fontSize:"17px"}}>Email</p>
         <p style={{fontFamily:"'Poppins', sans-serif",fontSize:"13px"}}>udumullaofficial@gmail.com</p>
         <p style={{fontFamily:"'Poppins', sans-serif",fontSize:"12px",color:"#d7dae0",cursor:"pointer"}}>send a message</p>
     </div>
 
-    <div className='contact-box' style={{borderRadius:"10px",display:"flex",flexDirection:"column",
-alignItems:"center",justifyContent:"center",padding:"10px",width:"280px",marginBottom:"20px",border:"1px solid #4071ed"}}>
+    <div  className='contact-box' style={{borderRadius:"10px",display:"flex",flexDirection:"column",
+alignItems:"center",justifyContent:"center",padding:"10px",width:"280px",marginBottom:"20px",border:"1px solid #4071ed",
+}}>
+
         <div style={{color:"white"}}><WhatsAppIcon /></div>
         <p style={{fontFamily:"'Ubuntu', sans-serif",fontSize:"17px"}}>WhatsApp</p>
-        <p style={{fontFamily:"'Poppins', sans-serif",fontSize:"13px"}}>+94775085369</p>
+        <p style={{fontFamily:"'Poppins', sans-serif",fontSize:"13px"}}>+94707725663</p>
         <p style={{fontFamily:"'Poppins', sans-serif",fontSize:"12px",color:"#d7dae0",cursor:"pointer"}}>send a message</p>
     </div>
 
-    <div className='contact-box' style={{borderRadius:"10px",display:"flex",flexDirection:"column",
-alignItems:"center",justifyContent:"center",padding:"10px",width:"280px",marginBottom:"20px",border:"1px solid #4071ed"}}>
+    <div  className='contact-box' style={{borderRadius:"10px",display:"flex",flexDirection:"column",
+alignItems:"center",justifyContent:"center",padding:"10px",width:"280px",marginBottom:"20px",border:"1px solid #4071ed",
+}}>
+
         <div style={{color:"white"}}><SmsIcon /></div>
         <p style={{fontFamily:"'Ubuntu', sans-serif",fontSize:"17px"}}>SMS</p>
         <p style={{fontFamily:"'Poppins', sans-serif",fontSize:"13px"}}>+94758220799</p>

@@ -361,6 +361,7 @@ cursor: pointer;
 }
 .contact-box{
   background-color: #2d285e;
+  
 }
 .contact-box:hover{
   background-color: #11071F;
@@ -380,6 +381,7 @@ input[type="text"] {
 
 /* Text area styles */
 textarea {
+  letter-spacing:1px;
   border: 2px solid #ccc;
   border-radius: 5px;
   padding: 10px;
